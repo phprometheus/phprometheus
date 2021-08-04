@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Phprometheus;
+
 interface Metric
 {
-    public function name(): string;
+    public static function name(): string;
 
-    public function description(): string;
+    public static function help(): string;
 
-    public function register(Exporter $exporter): void;
+    public function labels(): array;
 }
