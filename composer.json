@@ -1,0 +1,22 @@
+{
+  "name": "phprometheus/phprometheus",
+  "description": "Opinionated library for shipping metrics to Prometheus.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kieran Patel",
+      "email": "me@kieranajp.co.uk"
+    }
+  ],
+  "psr-4": {
+    "Phprometheus\\": "src/"
+  },
+  "require": {
+    "php": ">=7.3",
+    "promphp/prometheus_client_php": "^2.2"
+  },
+  "require-dev": {
+    "kahlan/kahlan": "^5"
+  }
+}

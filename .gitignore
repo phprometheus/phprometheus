@@ -1,0 +1,4 @@
+example/
+vendor/
+coverage.xml
+composer.lock
