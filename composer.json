@@ -18,5 +18,11 @@
   },
   "require-dev": {
     "kahlan/kahlan": "^5"
+  },
+  "suggest": {
+    "phprometheus/phprometheus-laravel": "Laravel service provider and middlewares for Phprometheus",
+    "phprometheus/phprometheus-guzzle-middleware": "Guzzle middleware for Phprometheus",
+    "phprometheus/phprometheus-push-gateway": "An adapter to use the Prometheus Push Gateway with Phprometheus",
+    "phprometheus/phprometheus-psr15-middleware": "PSR-15 middleware for Phprometheus"
   }
 }
