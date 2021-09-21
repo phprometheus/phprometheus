@@ -1,4 +1,4 @@
-name: Master workflow
+name: Main branch workflow
 on:
   push:
     branches:
@@ -12,4 +12,5 @@ jobs:
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
           WITH_V: true

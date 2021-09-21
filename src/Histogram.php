@@ -18,6 +18,9 @@ abstract class Histogram implements Metric
         return $this->labels;
     }
 
+    /**
+     * The buckets to lump this histogram's metrics into. Can be overridden.
+     */
     public static function buckets(): array
     {
         return \Prometheus\Histogram::getDefaultBuckets();
