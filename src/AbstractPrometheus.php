@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace Phprometheus;
 
 use Prometheus\Collector;
-use Prometheus\CollectorRegistry;
+use Prometheus\RegistryInterface;
 
 abstract class AbstractPrometheus implements Prometheus
 {
     private $namespace;
 
-    protected $collectorRegistry;
+    protected $registry;
 
-    public function __construct(string $namespace, CollectorRegistry $collectorRegistry)
+    public function __construct(string $namespace, RegistryInterface $registry)
     {
         $this->namespace = $namespace;
-        $this->collectorRegistry = $$this->collectorRegistry;
+        $this->registry = $registry;
     }
 
-    public function incrementCounter(Counter $metric, float $amount = 1): Collector
+    public function incrementCounter(Counter $metric, float $amount = 1): void
     {
-        $collector = $this->collectorRegistry->getOrRegisterCounter(
+        $collector = $this->registry->getOrRegisterCounter(
             $this->namespace,
             $metric::name(),
             $metric::help(),
@@ -29,13 +29,11 @@ abstract class AbstractPrometheus implements Prometheus
         );
 
         $collector->incBy($amount, array_values($metric->labels()));
-
-        return $collector;
     }
 
-    public function incrementGauge(Gauge $metric, float $amount = 1): Collector
+    public function incrementGauge(Gauge $metric, float $amount = 1): void
     {
-        $collector = $this->collectorRegistry->getOrRegisterGauge(
+        $collector = $this->registry->getOrRegisterGauge(
             $this->namespace,
             $metric::name(),
             $metric::help(),
@@ -43,13 +41,11 @@ abstract class AbstractPrometheus implements Prometheus
         );
 
         $collector->incBy($amount, array_values($metric->labels()));
-
-        return $collector;
     }
 
-    public function setGauge(Gauge $metric, float $value): Collector
+    public function setGauge(Gauge $metric, float $value): void
     {
-        $collector = $this->collectorRegistry->getOrRegisterGauge(
+        $collector = $this->registry->getOrRegisterGauge(
             $this->namespace,
             $metric::name(),
             $metric::help(),
@@ -57,13 +53,11 @@ abstract class AbstractPrometheus implements Prometheus
         );
 
         $collector->set($value, array_values($metric->labels()));
-
-        return $collector;
     }
 
-    public function observeHistogram(Histogram $metric, float $value): Collector
+    public function observeHistogram(Histogram $metric, float $value): void
     {
-        $collector = $this->collectorRegistry->getOrRegisterHistogram(
+        $collector = $this->registry->getOrRegisterHistogram(
             $this->namespace,
             $metric::name(),
             $metric::help(),
@@ -72,7 +66,5 @@ abstract class AbstractPrometheus implements Prometheus
         );
 
         $collector->observe($value, array_values($metric->labels()));
-
-        return $collector;
     }
 }

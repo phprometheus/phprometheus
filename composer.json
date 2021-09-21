@@ -9,8 +9,10 @@
       "email": "me@kieranajp.co.uk"
     }
   ],
-  "psr-4": {
-    "Phprometheus\\": "src/"
+  "autoload": {
+    "psr-4": {
+      "Phprometheus\\": "src/"
+    }
   },
   "require": {
     "php": ">=7.3",

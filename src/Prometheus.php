@@ -8,13 +8,13 @@ use Prometheus\Collector;
 
 interface Prometheus
 {
-    public function incrementCounter(Counter $metric, float $amount = 1): Collector;
+    public function incrementCounter(Counter $metric, float $amount = 1): void;
 
-    public function incrementGauge(Gauge $metric, float $amount = 1): Collector;
+    public function incrementGauge(Gauge $metric, float $amount = 1): void;
 
-    public function setGauge(Gauge $metric, float $value): Collector;
+    public function setGauge(Gauge $metric, float $value): void;
 
-    public function observeHistogram(Histogram $metric, float $value): Collector;
+    public function observeHistogram(Histogram $metric, float $value): void;
 
     public function flush(): array;
 }

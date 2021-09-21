@@ -8,6 +8,6 @@ class PrometheusExporter extends AbstractPrometheus implements Prometheus
 {
     public function flush(): array
     {
-        return $this->collectorRegistry->getMetricFamilySamples();
+        return $this->registry->getMetricFamilySamples();
     }
 }
