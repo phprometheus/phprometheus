@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - README.md
+      - .gitignore
+      - .github/**
+      - Makefile
 jobs:
   build:
     runs-on: ubuntu-latest
