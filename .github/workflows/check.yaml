@@ -1,0 +1,27 @@
+name: Lint and test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: [ '7.3', '7.4', '8.0' ]
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          fail-fast: true
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install deps
+        run: composer install
+      - name: Run linters
+        run: make lint
+      - name: Run tests
+        run: make test
