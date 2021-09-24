@@ -19,6 +19,8 @@ jobs:
           fail-fast: true
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install deps
+        run: composer install
       - name: Run linters
         run: make lint
       - name: Run tests
