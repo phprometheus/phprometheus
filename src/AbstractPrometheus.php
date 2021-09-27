@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Phprometheus;
 
-use Prometheus\Collector;
 use Prometheus\RegistryInterface;
 
 abstract class AbstractPrometheus implements Prometheus
